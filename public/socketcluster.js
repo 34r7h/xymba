@@ -1332,6 +1332,7 @@ var SCTransport = function (authEngine, codecEngine, options) {
   // Open the connection.
 
   this.state = this.CONNECTING;
+  console.log(this.uri())
   var uri = this.uri();
 
   var wsSocket = createWebSocket(uri, this.options);

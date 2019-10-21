@@ -82,7 +82,7 @@
       };
 
       // Connect to SocketCluster server
-      const socket = socketCluster.create(options);
+      const socket = socketCluster.create();
 
       // Listen for lifecycle events emitted by SocketCluster
       socket.on('error', function (err) {
@@ -109,8 +109,8 @@
         console.error('Failed to subscribe to the sample channel due to error: ' + err);
       });
 
-      sampleChannel.watch(function (num) {
-        console.log('Sample channel message:', num);
+      sampleChannel.watch(function (message) {
+        console.log('Sample channel message:', message);
       });
     </script>
   </body>

@@ -35,17 +35,19 @@ class Worker extends SCWorker {
     // Handle incoming websocket connections and listen for events.
     scServer.on('connection', function (socket) {
 
-      socket.on('sampleClientEvent', function (data) {
+      socket.on('sample', function (data) {
         count++;
         console.log('Handled sampleClientEvent', data);
-        scServer.exchange.publish('sample', count);
+        scServer.exchange.publish('sample', count + ': ' + JSON.stringify(data));
       });
-
+      socket.emit('random', {
+        number: Math.floor(Math.random() * 999999)
+      });
       var interval = setInterval(function () {
         socket.emit('random', {
-          number: Math.floor(Math.random() * 5)
+          number: Math.floor(Math.random() * 999999)
         });
-      }, 10000);
+      }, 60000);
 
       socket.on('disconnect', function () {
         clearInterval(interval);
