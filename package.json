@@ -13,7 +13,7 @@
     }
   ],
   "dependencies": {
-    "express": "4.16.4",
+    "express": "4.17.3",
     "minimist": "1.2.0",
     "morgan": "^1.9.1",
     "sc-framework-health-check": "^2.0.0",
